@@ -20,6 +20,7 @@ export default function Home() {
         />
         <p>口座番号</p>
         
+        
         <div>
         <p>預金残高</p>
         <input type = "number"></input>
