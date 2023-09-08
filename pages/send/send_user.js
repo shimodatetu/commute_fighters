@@ -1,41 +1,53 @@
 import Head from 'next/head';
-import styles from '../styles/Home.module.css';
+import styles from '../../styles/Home.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from "next/router";
 
-const login_user = {id:"1",name:"タテイシミノリ",yokin_zandaka:"50000", url:"/images/human4.png", kouza_number:1234567}
-const users = [{id:"1",name:"ユアサシンタ",yokin_zandaka:"12000", url:"/images/human1.png",kouza_number:1234567},{id:"2",name:"ウエハラタクミ",yokin_zandaka:"20000", url:"/images/human2.png", kouza_number:1234567},{id:"3",name:"アンドウユウサク",yokin_zandaka:"3000", url:"/images/human3.png",kouza_number:1234567}]
+
+const users = [{id:0,name:"A",yokin_zandaka:"12000"},{id:1,name:"B",yokin_zandaka:"20000"},{id:2,name:"C",yokin_zandaka:"3000"}]
+
+const login_user_id =  1
+
 
 
 export default function Home() {
-  return (
+    const router = useRouter();
+    const send_user_id = Number(router.query.user_id)
+    const send_user = users[send_user_id]
+    const login_user = users[login_user_id]
+
+    console.log(send_user.name)
+  
+    return (
     <div className={styles.container}>
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
-        <div className={styles.grid}>
+      
+
+      <main>
+
+        <p>送信先</p>
+        <p>{send_user_id}</p>
+        <p>ユーザ名：</p><div>{send_user["name"]}</div>
+
         <Image
-            src={login_user["url"]} // Route of the image file
+            src="/images/approval.png" // Route of the image file
             height={144} // Desired size with correct aspect ratio
             width={144} // Desired size with correct aspect ratio
             alt="Your Name"
         />
-        <p>{login_user["name"]}</p>
-        </div>
-
-        <div className={styles.grid}>
-        <p>口座番号</p>
-        <p>{login_user["kouza_number"]}</p>
-        </div>
-
-        
-        <div className={styles.grid}>
-        <p>預金残高</p>
+        <div>
+        <p>送信上限額</p>
         <p>{login_user["yokin_zandaka"]}</p>
         </div>
+
+        <p>送信金額</p>
+        
+
 
         <h2>
         <Link href="/send/page2">送金</Link>
