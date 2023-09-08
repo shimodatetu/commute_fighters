@@ -4,7 +4,7 @@ import styles2 from '../../styles/user_list.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
 
-const users = [{id:"1",name:"A",yokin_zandaka:"12000"},{id:"2",name:"B",yokin_zandaka:"20000"},{id:"3",name:"C",yokin_zandaka:"3000"}]
+const users = [{id:"1",name:"ユアサシンタ",yokin_zandaka:"12000", url:"/images/human1.png"},{id:"2",name:"ウエハラタクミ",yokin_zandaka:"20000", url:"/images/human2.png"},{id:"3",name:"アンドウユウサク",yokin_zandaka:"3000", url:"/images/human3.png"}]
 
 export default function Home() {
   return (
@@ -21,7 +21,7 @@ export default function Home() {
         <Link href={{pathname: "send/send_user", query: {user_id: user.id} }} as="/send/send_user">
             <div className={styles.grid}>
                 <Image
-                    src="/images/human1.png" // Route of the image file
+                    src={user.url} // Route of the image file
                     height={144} // Desired size with correct aspect ratio
                     width={144} // Desired size with correct aspect ratio
                     alt="Your Name"

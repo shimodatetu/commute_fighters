@@ -3,6 +3,10 @@ import styles from '../styles/Home.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
 
+
+const login_user = {id:"1",name:"タテイシミノリ",yokin_zandaka:"50000", url:"/images/human4.png", kouza_number:1234567}
+const users = [{id:"1",name:"ユアサシンタ",yokin_zandaka:"12000", url:"/images/human1.png",kouza_number:1234567},{id:"2",name:"ウエハラタクミ",yokin_zandaka:"20000", url:"/images/human2.png", kouza_number:1234567},{id:"3",name:"アンドウユウサク",yokin_zandaka:"3000", url:"/images/human3.png",kouza_number:1234567}]
+
 export default function Home() {
   return (
     <div className={styles.container}>
@@ -14,18 +18,23 @@ export default function Home() {
       <main className={styles.main}>
         <div className={styles.grid}>
         <Image
-            src="/images/human3.png" // Route of the image file
+            src={login_user["url"]} // Route of the image file
             height={144} // Desired size with correct aspect ratio
             width={144} // Desired size with correct aspect ratio
             alt="Your Name"
         />
-        <p>temp</p>
+        <p>{login_user["name"]}</p>
         </div>
+
+        <div className={styles.grid}>
         <p>口座番号</p>
+        <p>{login_user["kouza_number"]}</p>
+        </div>
+
         
-        <div>
+        <div className={styles.grid}>
         <p>預金残高</p>
-        <p>yokin</p>
+        <p>{login_user["yokin_zandaka"]}</p>
         </div>
 
         <h2>
