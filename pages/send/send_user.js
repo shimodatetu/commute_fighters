@@ -1,53 +1,105 @@
 import Head from 'next/head';
-import styles from '../styles/Home.module.css';
+import styles from '../../styles/Home.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
-import style2 from '../styles/user_list.module.css'
+import { useRouter } from "next/router";
+import { useState } from "react";
 
-const login_user = {id:"1",name:"タテイシミノリ",yokin_zandaka:"50000", url:"/images/human4.png", kouza_number:1234567}
-const users = [{id:"1",name:"ユアサシンタ",yokin_zandaka:"12000", url:"/images/human1.png",kouza_number:1234567},{id:"2",name:"ウエハラタクミ",yokin_zandaka:"20000", url:"/images/human2.png", kouza_number:1234567},{id:"3",name:"アンドウユウサク",yokin_zandaka:"3000", url:"/images/human3.png",kouza_number:1234567}]
+
+const users = [{id:"1",name:"ユアサシンタ",yokin_zandaka:"12000", url:"/images/human1.png"},{id:"2",name:"ウエハラタクミ",yokin_zandaka:"20000", url:"/images/human2.png"},{id:"3",name:"アンドウユウサク",yokin_zandaka:"3000", url:"/images/human3.png"}]
+
+
+const login_user_id =  1
+
+function clickBtn1() {
+    const soukingaku = document.getElementById("soukingaku");
+    document.getElementById("span2").textContent = soukingaku.value;
+  }
+
+
+function clickBtn3() {
+    const number2 = document.getElementById("number2");
+    document.getElementById("span2").textContent = number2.value;
+    }
+
 
 
 export default function Home() {
-  return (
+    const router = useRouter();
+    const send_user_id = Number(router.query.user_id)
+    const send_user = users[send_user_id]
+    const login_user = users[login_user_id]
+
+    const [money, setMoney] = useState("");
+    console.log(send_user_id)
+    
+    console.log(send_user)
+    
+    const canSend = (e) => {
+        setMoney(e.target.value)
+        //router.push("/send/send_comp","/send/send_comp",{send_money:money})
+    }
+
+    const send_button = (money) =>
+    {
+        router.push({pathname:"/send/send_comp",as:"/send/send_comp",query:{send_money:money}})
+        
+
+        
+
+    }
+
+    
+    
+  
+    return (
     <div className={styles.container}>
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
-        <div className={style2.box2}>
 
-        <div className={styles.grid}>
+      
+
+      <main>
+
+        <p>送信先</p>
+        <p>{send_user_id}</p>        
+        <p>ユーザ名：</p><div>{send_user["name"]}</div>
+
+
         <Image
-            src={login_user["url"]} // Route of the image file
+            src={send_user.url} // Route of the image file
             height={144} // Desired size with correct aspect ratio
             width={144} // Desired size with correct aspect ratio
             alt="Your Name"
         />
-        <p className={style2.name}>{login_user["name"]}</p>
+        <div>
+        <p>送信上限額</p>
+        <p>{login_user["yokin_zandaka"]}</p>
         </div>
+
+        <div>
+        <p>送信金額</p>
+        <input type="text" id="soukingaku" value={money} onChange = {canSend} max="2000" />
+
+        <button onClick={() => send_button(money)}>送金</button>
+
+
+        <p>
+             <span id="span2"></span></p>
+             
+        </div>
+
+
+
 
         
-        <p className={style2.name3}>口座番号:{login_user["kouza_number"]}</p>
-        </div>
+
+
+
         
-
-        <div className={style2.box1}>
-
-        <div className={style2.name2}>
-        預金残高　 
-        {login_user["yokin_zandaka"]}円
-
-        </div>
-        </div> 
-
-        <button className={style2.btn}>
-        <h2>
-        <Link href="/send/page2">送金</Link>
-        </h2>
-        </button>
         
       </main>
 
