@@ -3,7 +3,7 @@ import styles from '../styles/Home.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
 
-const users = [{id:"1",name:"A",yokin_zandaka:"12000"},{id:"2",name:"B",yokin_zandaka:"20000"},{id:"3",name:"C",yokin_zandaka:"3000"}]
+const users = [{"id":"1","name":"A","yokin_zandaka":"12000"},{id:"2",name:"B",yokin_zandaka:"20000"},{id:"3",name:"C",yokin_zandaka:"3000"}]
 
 export default function Home() {
   return (
@@ -29,7 +29,7 @@ export default function Home() {
         </div>
 
         <h2>
-        <Link href="/send/page2">送金</Link>
+        <Link href="/user/user_list">送金</Link>
         </h2>
         
       </main>
