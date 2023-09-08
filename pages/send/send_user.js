@@ -38,7 +38,18 @@ export default function Home() {
     const canSend = (e) => {
         setMoney(e.target.value)
         //router.push("/send/send_comp","/send/send_comp",{send_money:money})
-      }
+    }
+
+    const send_button = (money) =>
+    {
+        router.push({pathname:"/send/send_comp",as:"/send/send_comp",query:{send_money:money}})
+        
+
+        
+
+    }
+
+    
     
   
     return (
@@ -73,12 +84,12 @@ export default function Home() {
         <p>送信金額</p>
         <input type="text" id="soukingaku" value={money} onChange = {canSend} max="2000" />
 
+        <button onClick={() => send_button(money)}>送金</button>
+
 
         <p>
              <span id="span2"></span></p>
-             <Link href={{ pathname: "/send/send_comp", query:{send_money:money} }} as = "/send/send_comp" >
-          送金
-        </Link>
+             
         </div>
 
 

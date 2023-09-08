@@ -10,6 +10,7 @@ import { useState } from "react";
 
 export default function FirstPost() {
     const router = useRouter();
+    console.log(router.query)
   return (
     <>
         <Image
