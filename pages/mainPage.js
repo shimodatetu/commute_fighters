@@ -2,6 +2,7 @@ import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
+import style2 from '../styles/user_list.module.css'
 
 const login_user = {id:"1",name:"タテイシミノリ",yokin_zandaka:"50000", url:"/images/human4.png", kouza_number:1234567}
 const users = [{id:"1",name:"ユアサシンタ",yokin_zandaka:"12000", url:"/images/human1.png",kouza_number:1234567},{id:"2",name:"ウエハラタクミ",yokin_zandaka:"20000", url:"/images/human2.png", kouza_number:1234567},{id:"3",name:"アンドウユウサク",yokin_zandaka:"3000", url:"/images/human3.png",kouza_number:1234567}]
@@ -31,10 +32,11 @@ export default function Home() {
         <p>{login_user["kouza_number"]}</p>
         </div>
 
-        
+        <div className={style2.box1}>
         <div className={styles.grid}>
         <p>預金残高</p>
         <p>{login_user["yokin_zandaka"]}</p>
+        </div>
         </div>
 
         <h2>
