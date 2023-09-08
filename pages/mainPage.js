@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Home() {
   return (
@@ -11,7 +12,7 @@ export default function Home() {
       </Head>
 
       <main>
-        <p>ユーザ名</p>
+        <p>ユーザ名：</p><div>temp</div>
         <Image
             src="/images/approval.png" // Route of the image file
             height={144} // Desired size with correct aspect ratio
@@ -22,8 +23,12 @@ export default function Home() {
         
         <div>
         <p>預金残高</p>
-        <input type = "number"></input>
+        <p>yokin</p>
         </div>
+
+        <h2>
+        <Link href="/send/page2">送金</Link>
+        </h2>
         
       </main>
 
