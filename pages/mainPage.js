@@ -8,6 +8,7 @@ const login_user = {id:"1",name:"タテイシミノリ",yokin_zandaka:"50000", u
 const users = [{id:"1",name:"ユアサシンタ",yokin_zandaka:"12000", url:"/images/human1.png",kouza_number:1234567},{id:"2",name:"ウエハラタクミ",yokin_zandaka:"20000", url:"/images/human2.png", kouza_number:1234567},{id:"3",name:"アンドウユウサク",yokin_zandaka:"3000", url:"/images/human3.png",kouza_number:1234567}]
 
 
+
 export default function Home() {
   return (
     <div className={styles.container}>
@@ -40,7 +41,7 @@ export default function Home() {
         </div>
 
         <h2>
-        <Link href="/send/page2">送金</Link>
+        <Link href="/user/user_list">送金</Link>
         </h2>
         
       </main>

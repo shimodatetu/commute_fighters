@@ -3,11 +3,24 @@ import styles from '../../styles/Home.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from "next/router";
+import { useState } from "react";
 
 
-const users = [{id:0,name:"A",yokin_zandaka:"12000"},{id:1,name:"B",yokin_zandaka:"20000"},{id:2,name:"C",yokin_zandaka:"3000"}]
+const users = [{id:"1",name:"ユアサシンタ",yokin_zandaka:"12000", url:"/images/human1.png"},{id:"2",name:"ウエハラタクミ",yokin_zandaka:"20000", url:"/images/human2.png"},{id:"3",name:"アンドウユウサク",yokin_zandaka:"3000", url:"/images/human3.png"}]
+
 
 const login_user_id =  1
+
+function clickBtn1() {
+    const soukingaku = document.getElementById("soukingaku");
+    document.getElementById("span2").textContent = soukingaku.value;
+  }
+
+
+function clickBtn3() {
+    const number2 = document.getElementById("number2");
+    document.getElementById("span2").textContent = number2.value;
+    }
 
 
 
@@ -17,7 +30,16 @@ export default function Home() {
     const send_user = users[send_user_id]
     const login_user = users[login_user_id]
 
-    console.log(send_user.name)
+    const [money, setMoney] = useState("");
+    console.log(send_user_id)
+    
+    console.log(send_user)
+    
+    const canSend = (e) => {
+        setMoney(e.target.value)
+        //router.push("/send/send_comp","/send/send_comp",{send_money:money})
+      }
+    
   
     return (
     <div className={styles.container}>
@@ -26,16 +48,18 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+
       
 
       <main>
 
         <p>送信先</p>
-        <p>{send_user_id}</p>
+        <p>{send_user_id}</p>        
         <p>ユーザ名：</p><div>{send_user["name"]}</div>
 
+
         <Image
-            src="/images/approval.png" // Route of the image file
+            src={send_user.url} // Route of the image file
             height={144} // Desired size with correct aspect ratio
             width={144} // Desired size with correct aspect ratio
             alt="Your Name"
@@ -45,13 +69,26 @@ export default function Home() {
         <p>{login_user["yokin_zandaka"]}</p>
         </div>
 
+        <div>
         <p>送信金額</p>
+        <input type="text" id="soukingaku" value={money} onChange = {canSend} max="2000" />
+
+
+        <p>
+             <span id="span2"></span></p>
+             <Link href={{ pathname: "/send/send_comp", query:{send_money:money} }} as = "/send/send_comp" >
+          送金
+        </Link>
+        </div>
+
+
+
+
         
 
 
-        <h2>
-        <Link href="/send/page2">送金</Link>
-        </h2>
+
+        
         
       </main>
 
