@@ -11,14 +11,16 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
-        <p>ユーザ名：</p><div>temp</div>
+      <main className={styles.main}>
+        <div className={styles.grid}>
         <Image
-            src="/images/approval.png" // Route of the image file
+            src="/images/human3.png" // Route of the image file
             height={144} // Desired size with correct aspect ratio
             width={144} // Desired size with correct aspect ratio
             alt="Your Name"
         />
+        <p>temp</p>
+        </div>
         <p>口座番号</p>
         
         <div>
