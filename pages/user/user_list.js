@@ -18,20 +18,49 @@ export default function Home() {
       <main className={styles.main}>
         <h1 className={styles.title}>送金相手を選択</h1>
 
-        {users.map((user, index) => (
-        <Link href={{pathname: "send/send_user", query: {user_id: user.id} }} as="/send/send_user">
-            <div className={styles.grid}>
-                <Image
-                    src="/images/human1.png" // Route of the image file
-                    height={144} // Desired size with correct aspect ratio
-                    width={144} // Desired size with correct aspect ratio
-                    alt="Your Name"
-                />
-                <p id = "user1">{user.name}</p>
-            </div>
-            </Link> 
-            ))
-        }
+        <hr></hr>
+        <table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>ユーザー一覧</th>
+    </tr>
+  </thead>
+  <tbody>
+    {users.map((user, index) => (
+      <tr>
+        <td>
+          <Link
+            href={{
+              pathname: "send/send_user",
+              query: { user_id: user.id },
+            }}
+            as={`/send/send_user/${user.id}`}
+          >
+            <img
+              src={user.url}
+              height={144}
+              width={144}
+              alt="Your Name"
+            />
+          </Link>
+        </td>
+        <td>
+          <Link
+            href={{
+              pathname: "send/send_user",
+              query: { user_id: user.id },
+            }}
+            as={`/send/send_user/${user.id}`}
+          >
+            <div className={styles2.name}>{user.name}</div>
+          </Link>
+        </td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+
         </main>
         </div>
 
