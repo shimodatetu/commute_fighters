@@ -1,5 +1,8 @@
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
+import Link from 'next/link';
+
+const user_id = 1
 
 export default function Home() {
   return (
@@ -10,6 +13,12 @@ export default function Home() {
       </Head>
 
       <main>
+      <div>
+        <Link href={{ pathname: "/send/send_user", query:{user_id:1} }} as = "/send/send_user" >
+          user 1
+        </Link>
+      </div>
+
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>

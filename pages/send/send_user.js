@@ -1,32 +1,53 @@
 import Head from 'next/head';
-import styles from '../styles/Home.module.css';
+import styles from '../../styles/Home.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from "next/router";
 
-const users = [{id:"1",name:"A",yokin_zandaka:"12000"},{id:"2",name:"B",yokin_zandaka:"20000"},{id:"3",name:"C",yokin_zandaka:"3000"}]
+
+const users = [{id:0,name:"A",yokin_zandaka:"12000"},{id:1,name:"B",yokin_zandaka:"20000"},{id:2,name:"C",yokin_zandaka:"3000"}]
+
+const login_user_id =  1
+
+
 
 export default function Home() {
-  return (
+    const router = useRouter();
+    const send_user_id = Number(router.query.user_id)
+    const send_user = users[send_user_id]
+    const login_user = users[login_user_id]
+
+    console.log(send_user.name)
+  
+    return (
     <div className={styles.container}>
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      
+
       <main>
-        <p>ユーザ名：</p><div>temp</div>
+
+        <p>送信先</p>
+        <p>{send_user_id}</p>
+        <p>ユーザ名：</p><div>{send_user["name"]}</div>
+
         <Image
             src="/images/approval.png" // Route of the image file
             height={144} // Desired size with correct aspect ratio
             width={144} // Desired size with correct aspect ratio
             alt="Your Name"
         />
-        <p>口座番号</p>
-        
         <div>
-        <p>預金残高</p>
-        <p>yokin</p>
+        <p>送信上限額</p>
+        <p>{login_user["yokin_zandaka"]}</p>
         </div>
+
+        <p>送信金額</p>
+        
+
 
         <h2>
         <Link href="/send/page2">送金</Link>
